@@ -85,4 +85,12 @@ Terraform would be assigned admin access programatically via an ACCESS KEY.
     terraform init
     terraform apply
     ```
+- Create an account at terraform.io
+
+- Create a new workspace with *Version Control Workflow* and connect your GitHub repo
+
+- In AWS, login as admin and under `uat` create a new user for terraform `tf-deploy` with programmatic access. Copy down keys.
+
+- Back in terraform.io, click *Configure variables* and set your AWS access keys under Environment Variables
+
 - 
