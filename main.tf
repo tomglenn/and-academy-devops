@@ -28,17 +28,17 @@ module "vpc" {
 }
 
 resource "aws_ecs_cluster" "cluster" {
-  name = "and-academy"
+  name = "and-academy-${var.env}"
 }
 
 resource "aws_alb" "main" {
-  name            = "academy"
+  name            = "academy-${var.env}"
   subnets         = module.vpc.public_subnets
   security_groups = [aws_security_group.main.id]
 }
 
 resource "aws_alb_target_group" "main" {
-  name        = "academy"
+  name        = "academy-${var.env}"
   port        = 80
   protocol    = "HTTP"
   vpc_id      = module.vpc.vpc_id
@@ -57,7 +57,7 @@ resource "aws_alb_listener" "main" {
 }
 
 resource "aws_ecs_service" "main" {
-  name            = "academy"
+  name            = "academy-${var.env}"
   cluster         = aws_ecs_cluster.cluster.id
   task_definition = aws_ecs_task_definition.service.arn
   desired_count   = 5
@@ -137,7 +137,7 @@ resource "aws_ecs_task_definition" "service" {
 }
 
 resource "aws_cloudwatch_log_group" "logs" {
-  name = "academy-log-group"
+  name = "academy-log-group-${var.env}"
 }
 
 resource "aws_iam_role" "main" {
