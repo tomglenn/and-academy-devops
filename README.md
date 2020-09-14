@@ -10,6 +10,9 @@ https://12factor.net/
 ### LucidChart
 LucidChart can be used for creating AWS diagrams
 
+### Codefresh
+Codefresh.io is a CI/CD tool like CircleCI/Jenkins that is geared towards Kubernetes applications
+
 ### AWS
 
 #### Account Structure
@@ -103,3 +106,6 @@ Terraform would be assigned admin access programatically via an ACCESS KEY.
 - Use this variable in the bucket name by adding `${var.env}` to the end of the bucket name
 
 - In terraform.io add a terraform variable called env and call it `uat`.
+
+- In `main.tf` add the `vpc` module
+    https://github.com/terraform-aws-modules/terraform-aws-vpc
