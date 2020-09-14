@@ -21,7 +21,7 @@ LucidChart can be used for creating AWS diagrams
 **IAM** - Identity Access Management  
 Can assign permissions to account via group controls
 
-**ARN** - Amazon Resource Name
+**ARN** - Amazon Resource Name  
 Everything (including users) in AWS have an ARN which is a unique resource name.  
 
 Through IAM you can assign any user permissions access to any resource (such as an S3 bucket) by assigning them the appropriate ARN access.
