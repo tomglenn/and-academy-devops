@@ -1,7 +1,7 @@
 # and-academy-devops
 
 ## Notes
----
+
 ### 12 Factor App
 12 Factor application breaks down the 12 factors that 
 make an application a good citizen
@@ -36,7 +36,7 @@ Things which run *outside* AWS (such as Terraform) will have an actual user accc
 Terraform would be assigned admin access programatically via an ACCESS KEY.
 
 ## Course Steps
----
+
 - Create a new AWS account
 
 - Within IAM create an `admin` account and `developer` account
