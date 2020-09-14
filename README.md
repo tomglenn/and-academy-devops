@@ -36,7 +36,6 @@ Things which run *outside* AWS (such as Terraform) will have an actual user accc
 Terraform would be assigned admin access programatically via an ACCESS KEY.
 
 ## Course Steps
-
 - Create a new AWS account
 
 - Within IAM create an `admin` account and `developer` account
@@ -72,6 +71,13 @@ Terraform would be assigned admin access programatically via an ACCESS KEY.
     AWS_ACCESS_KEY_ID=<ACCESS KEY ID FOR TERRAFORM USER>
     AWS_SECRET_ACCESS_KEY=<SECRET KEY FOR TERRAFORM USER>
     AWS_REGION=eu-west-2
+    ```
+
+- Create a `main.tf` file
+    ```
+    resource "aws_s3_bucket" "test" {
+        bucket = "tomglenn-test123"
+    }
     ```
 
 - Then run Terraform which will apply the config in `main.tf`
