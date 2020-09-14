@@ -1,2 +1,3 @@
 Accounts
-Notes
+.terraform/
+terraform.tfstate
