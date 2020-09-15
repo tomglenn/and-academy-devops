@@ -59,7 +59,7 @@ resource "aws_iam_policy" "cf-deployer" {
               "ecs:RegisterTaskDefinition",
               "ecs:UpdateService"
           ],
-          Resource: [ aws_ecr_repository.main.arn, aws_ecs_cluster.cluster.arn ]
+          Resource: [ aws_ecr_repository.main.arn, aws_ecs_cluster.cluster.arn, aws_ecs_service.main.id ]
         },
         {
           Effect: "Allow",
