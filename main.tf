@@ -59,13 +59,18 @@ resource "aws_iam_policy" "cf-deployer" {
               "ecs:RegisterTaskDefinition",
               "ecs:UpdateService"
           ],
-          Resource: [ aws_ecr_repository.main.arn ]
+          Resource: [ aws_ecr_repository.main.arn, aws_ecs_cluster.cluster.arn ]
         },
         {
           Effect: "Allow",
           Action: [
               "ecr:GetAuthorizationToken",
           ],
+          Resource: "*"
+        },
+        {
+          Effect: "Allow",
+          Action: "iam:PassRole",
           Resource: "*"
         }
     ]
