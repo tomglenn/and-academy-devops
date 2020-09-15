@@ -50,6 +50,14 @@ resource "aws_iam_policy" "cf-deployer" {
               "ecr:UploadLayerPart",
               "ecr:CompleteLayerUpload",
               "ecr:PutImage",
+              "ecs:DescribeServices",
+              "ecs:DescribeTaskDefinition",
+              "ecs:DescribeTasks",
+              "ecs:ListClusters",
+              "ecs:ListServices",
+              "ecs:ListTasks",
+              "ecs:RegisterTaskDefinition",
+              "ecs:UpdateService"
           ],
           Resource: [ aws_ecr_repository.main.arn ]
         },
