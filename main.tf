@@ -27,6 +27,60 @@ module "vpc" {
   }
 }
 
+resource "aws_ecr_repository" "main" {
+  name = "toms-academy"
+}
+
+resource "aws_iam_user" "cf-deployer" {
+    name = "cf-deployer"
+}
+
+resource "aws_iam_policy" "cf-deployer" {
+  policy = jsonencode({
+    Version: "2012-10-17",
+    Statement: [
+        {
+          Effect: "Allow",
+          Action: [
+              "ecr:GetAuthorizationToken",
+              "ecr:BatchCheckLayerAvailability",
+              "ecr:GetDownloadUrlForLayer",
+              "ecr:BatchGetImage",
+              "ecr:InitiateLayerUpload",
+              "ecr:UploadLayerPart",
+              "ecr:CompleteLayerUpload",
+              "ecr:PutImage",
+          ],
+          Resource: [ aws_ecr_repository.main.arn ]
+        },
+        {
+          Effect: "Allow",
+          Action: [
+              "ecr:GetAuthorizationToken",
+          ],
+          Resource: "*"
+        }
+    ]
+    })
+}
+
+resource "aws_iam_user_policy_attachment" "main" {
+  policy_arn = aws_iam_policy.main.arn
+  user = aws_iam_user.cf-deployer.name
+}
+
+resource "aws_iam_access_key" "cf-deployer" {
+  user = aws_iam_user.cf-deployer.name
+}
+
+output "AWS_ACCESS_KEY_ID" {
+  value = aws_iam_access_key.cf-deployer.id
+}
+
+output "AWS_SECRET_ACCESS_KEY" {
+  value = aws_iam_access_key.cf-deployer.secret
+}
+
 resource "aws_ecs_cluster" "cluster" {
   name = "and-academy-${var.env}"
 }
